@@ -1,4 +1,3 @@
-
 /*
 ===========================================
 📝 To-Do List Filter with Anonymous Functions
@@ -39,7 +38,10 @@ Step-by-Step:
 2. Use an anonymous function as the callback.
 3. Return only the tasks that are not completed.
 */
-const incompleteTasks = todos.filter((task) => !task.completed);
+
+// async attempt: const incompleteTasks = todos.filter((task) => !task.completed);
+const incompleteTask = todos.filter(task => task.completed == false);
+console.log("Incomplete Tasks:", incompleteTask);
 
 /*
 🔹 Task 2: Sort Tasks by Priority
@@ -49,7 +51,10 @@ Step-by-Step:
 2. Use an anonymous function as the comparison function.
 3. Sort tasks in ascending order of priority (1 = highest).
 */
-const sortedByPriority = [...todos].sort((a, b) => a.priority - b.priority);
+
+// async attempt: const sortedByPriority = [...todos].sort((a, b) => a.priority - b.priority);
+todos.sort((a, b) => a.priority - b.priority);
+console.log("Sorted by Priority:", todos);
 
 /*
 🔹 Task 3: Combine Filters
@@ -59,9 +64,13 @@ Step-by-Step:
 2. Then, sort the filtered results by priority using `sort()`.
 3. Use method chaining to perform both steps together.
 */
-const incompleteSorted = todos
-  .filter((task) => !task.completed)
-  .sort((a, b) => a.priority - b.priority);
+
+// async attempt:
+// const incompleteSorted = todos
+//   .filter((task) => !task.completed)
+//   .sort((a, b) => a.priority - b.priority);
+const combineFilter = todos.filter(task => task.completed == false).sort((a, b) => a.priority - b.priority);
+console.log("Sorted Incomplete Tasks:", combineFilter);
 
 /*
 🔹 Task 4: Mark All Tasks as Completed
@@ -71,13 +80,9 @@ Step-by-Step:
 2. Use an anonymous function to modify each object.
 3. Change the `completed` property to `true` for every task.
 */
-const allCompleted = todos.map((task) => ({ ...task, completed: true }));
 
-// ============================================
-// 🧪 Console Test Your Work
-// ============================================
-
-console.log("Incomplete Tasks:", incompleteTasks);
-console.log("Sorted by Priority:", sortedByPriority);
-console.log("All Tasks Completed:", allCompleted);
-console.log("Sorted Incomplete Tasks:", incompleteSorted);
+// async attempt: const allCompleted = todos.map((task) => ({ ...task, completed: true }));
+const completedTask = todos.map(task => {
+  return { ...task, completed: true };
+});
+console.log("All Tasks Completed:", completedTask);
